@@ -1,37 +1,35 @@
-"use strict";
-
-// element toggle function
+// untuk fungsi toggle pada element html
 const elementToggleFunc = function (e) {
   e.classList.toggle("active");
 };
 
-// sidebar variables
+// variabel untuk sidebar dan sidebar button
 const sidebar = document.querySelector("[data-sidebar]");
 const sidebarBtn = document.querySelector("[data-sidebar-btn]");
 
-// sidebar toggle functionality for mobile
+// untuk fungsi toggle pada sidebar versi mobile nya
 sidebarBtn.addEventListener("click", function () {
   elementToggleFunc(sidebar);
 });
 
-// testimonials variables
+// variabel untuk testimoni, testimoni container modal, modal close button, dan overlay
 const testimonialsItem = document.querySelectorAll("[data-testimonials-item]");
 const modalContainer = document.querySelector("[data-modal-container]");
 const modalCloseBtn = document.querySelector("[data-modal-close-btn]");
 const overlay = document.querySelector("[data-overlay]");
 
-// modal variable
+// variabel untuk isian / konten testimoni (image, title, dan text) dari modal
 const modalImg = document.querySelector("[data-modal-img]");
 const modalTitle = document.querySelector("[data-modal-title]");
 const modalText = document.querySelector("[data-modal-text]");
 
-// modal toggle function
+// fungsi toggle untuk modal beserta overlay modal nya
 const testimonialsModalFunc = function () {
   modalContainer.classList.toggle("active");
   overlay.classList.toggle("active");
 };
 
-// add click event to all modal items
+// event untuk memanggil semua items atau konten dari modal
 for (let i = 0; i < testimonialsItem.length; i++) {
   testimonialsItem[i].addEventListener("click", function () {
     modalImg.src = this.querySelector("[data-testimonials-avatar]").src;
@@ -47,21 +45,21 @@ for (let i = 0; i < testimonialsItem.length; i++) {
   });
 }
 
-// add click event to modal close button
+// event untuk menutup modal
 modalCloseBtn.addEventListener("click", testimonialsModalFunc);
 overlay.addEventListener("click", testimonialsModalFunc);
 
-// custom select variables
+// variabel select, select item, select value, dan filter untuk memilih konten pada bagian portfolio
 const select = document.querySelector("[data-select]");
 const selectItems = document.querySelectorAll("[data-select-item]");
-const selectValue = document.querySelector("[data-selecct-value]");
+const selectValue = document.querySelector("[data-select-value]");
 const filterBtn = document.querySelectorAll("[data-filter-btn]");
 
 select.addEventListener("click", function () {
   elementToggleFunc(this);
 });
 
-// add event in all select items
+// event untuk memilih semua item pada portfolio
 for (let i = 0; i < selectItems.length; i++) {
   selectItems[i].addEventListener("click", function () {
     let selectedValue = this.innerText.toLowerCase();
@@ -71,9 +69,10 @@ for (let i = 0; i < selectItems.length; i++) {
   });
 }
 
-// filter variables
+// variabel filter item pada portfolio
 const filterItems = document.querySelectorAll("[data-filter-item]");
 
+// fungsi filter data / item nya berdasarkan kategori yang dipilih
 const filterFunc = function (selectedValue) {
   for (let i = 0; i < filterItems.length; i++) {
     if (selectedValue === "all") {
@@ -86,7 +85,7 @@ const filterFunc = function (selectedValue) {
   }
 };
 
-// add event in all filter button items for large screen
+// event untuk menampilkan item berdasarkan kategori
 let lastClickedBtn = filterBtn[0];
 
 for (let i = 0; i < filterBtn.length; i++) {
@@ -101,15 +100,15 @@ for (let i = 0; i < filterBtn.length; i++) {
   });
 }
 
-// contact form variables
+// variabel form untuk contact
 const form = document.querySelector("[data-form]");
 const formInputs = document.querySelectorAll("[data-form-input]");
 const formBtn = document.querySelector("[data-form-btn]");
 
-// add event to all form input field
+// event untuk inputannya
 for (let i = 0; i < formInputs.length; i++) {
   formInputs[i].addEventListener("input", function () {
-    // check form validation
+    // cek validasinya
     if (form.checkValidity()) {
       formBtn.removeAttribute("disabled");
     } else {
@@ -118,11 +117,11 @@ for (let i = 0; i < formInputs.length; i++) {
   });
 }
 
-// page navigation variables
+// variabel untuk link navigasi dan halaman
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("[data-page]");
 
-// add event to all nav link
+// event untuk memanggil setiap halaman sesuai menu navigasi yang diklik
 for (let i = 0; i < navigationLinks.length; i++) {
   navigationLinks[i].addEventListener("click", function () {
     for (let i = 0; i < pages.length; i++) {
